@@ -1,7 +1,16 @@
 package me.hero.minicommerce.acepptance;
 
+import static org.assertj.core.api.Assertions.*;
+
+import io.restassured.RestAssured;
+import io.restassured.response.ExtractableResponse;
+import io.restassured.response.Response;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 
 @DisplayName("상품 관리 기능")
 public class ItemAcceptanceTest extends AcceptanceTest {
@@ -13,9 +22,25 @@ public class ItemAcceptanceTest extends AcceptanceTest {
    *  Then : 상품이 생성 된다.
    */
   @Test
-  @DisplayName("상품 수정 기능")
+  @DisplayName("상품 생성 기능")
   void createItem() {
+    //given
+    Map<String, String> params = new HashMap<>();
+    params.put("name", "닭볶음탕");
+    params.put("price", "18000");
 
+    //when
+    ExtractableResponse<Response> response = RestAssured.given().log().all()
+        .body(params)
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .when()
+        .post("/items")
+        .then().log().all()
+        .extract();
+
+    //then
+    assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
+    assertThat(response.header("Location")).isNotBlank();
   }
 
   /**
