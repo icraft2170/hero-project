@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: MINI-COMMERCE
+  datasource:
+    url: jdbc:mysql://localhost:3306/mini_commerce?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: mini_commerce_user
+    password: commerce1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+  jpa:
+    database: mysql
+    generate-ddl: true
+    hibernate:
+      ddl-auto: 'create-drop'
+    show-sql: true
+
+
