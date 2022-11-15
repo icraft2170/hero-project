@@ -1,16 +1,16 @@
 package me.hero.minicommerce.acepptance;
 
+import static me.hero.minicommerce.acepptance.ItemSteps.상품_매개변수_생성;
+import static me.hero.minicommerce.acepptance.ItemSteps.상품_생성;
+import static me.hero.minicommerce.acepptance.ItemSteps.상품_수정;
 import static org.assertj.core.api.Assertions.*;
 
-import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
-import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 
 @DisplayName("상품 관리 기능")
 public class ItemAcceptanceTest extends AcceptanceTest {
@@ -25,18 +25,10 @@ public class ItemAcceptanceTest extends AcceptanceTest {
   @DisplayName("상품 생성 기능")
   void createItem() {
     //given
-    Map<String, String> params = new HashMap<>();
-    params.put("name", "닭볶음탕");
-    params.put("price", "18000");
+    Map<String, String> params = 상품_매개변수_생성("닭볶음탕", "18000");
 
     //when
-    ExtractableResponse<Response> response = RestAssured.given().log().all()
-        .body(params)
-        .contentType(MediaType.APPLICATION_JSON_VALUE)
-        .when()
-        .post("/items")
-        .then().log().all()
-        .extract();
+    ExtractableResponse<Response> response = 상품_생성(params);
 
     //then
     assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
@@ -52,8 +44,22 @@ public class ItemAcceptanceTest extends AcceptanceTest {
   @Test
   @DisplayName("상품 수정 기능")
   void modifyItem() {
+    //given
+    Map<String, String> params = 상품_매개변수_생성("닭볶음탕", "18000");
+    ExtractableResponse<Response> savedItem = 상품_생성(params);
 
+    String updateLocation = savedItem.header("Location");
+    Map<String, String> updateParams = 상품_매개변수_생성("닭볶음탕", "20000");
+
+    //when
+    ExtractableResponse<Response> response = 상품_수정(updateLocation, updateParams);
+
+    //then
+    assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+    assertThat(response.jsonPath().getString("name")).isEqualTo(updateParams.get("name"));
+    assertThat(response.jsonPath().getLong("price")).isEqualTo(Long.parseLong(updateParams.get("price")));
   }
+
 
   /**
    * Feature : 상품 삭제 기능
