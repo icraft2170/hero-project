@@ -52,7 +52,36 @@ public class ItemAcceptanceTest extends AcceptanceTest {
   @Test
   @DisplayName("상품 수정 기능")
   void modifyItem() {
+    //given
+    Map<String, String> params = new HashMap<>();
+    params.put("name", "닭볶음탕");
+    params.put("price", "18000");
+    ExtractableResponse<Response> savedItem = RestAssured.given().log().all()
+        .body(params)
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .when()
+        .post("/items")
+        .then().log().all()
+        .extract();
 
+    String updateLocation = savedItem.header("Location");
+    Map<String, String> updateParams = new HashMap<>();
+    updateParams.put("name", "닭볶음탕");
+    updateParams.put("price", "20000");
+
+    //when
+    ExtractableResponse<Response> response = RestAssured.given().log().all()
+        .body(updateParams)
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .when()
+        .put(updateLocation)
+        .then().log().all()
+        .extract();
+
+    //then
+    assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+    assertThat(response.jsonPath().getString("name")).isEqualTo(updateParams.get("name"));
+    assertThat(response.jsonPath().getLong("price")).isEqualTo(updateParams.get("price"));
   }
 
   /**
