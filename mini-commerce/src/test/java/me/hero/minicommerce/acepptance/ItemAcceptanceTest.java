@@ -81,7 +81,7 @@ public class ItemAcceptanceTest extends AcceptanceTest {
     //then
     assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
     assertThat(response.jsonPath().getString("name")).isEqualTo(updateParams.get("name"));
-    assertThat(response.jsonPath().getLong("price")).isEqualTo(updateParams.get("price"));
+    assertThat(response.jsonPath().getLong("price")).isEqualTo(Long.parseLong(updateParams.get("price")));
   }
 
   /**
