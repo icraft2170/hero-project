@@ -1,6 +1,8 @@
 package me.hero.minicommerce.item.domain;
 
 import static org.assertj.core.api.Assertions.*;
+
+import me.hero.minicommerce.item.domain.dto.ItemModifyDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
