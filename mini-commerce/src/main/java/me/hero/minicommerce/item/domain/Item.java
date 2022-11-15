@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.hero.minicommerce.item.domain.dto.ItemModifyParams;
 import org.hibernate.annotations.Comment;
 
 @NoArgsConstructor
@@ -27,5 +28,10 @@ public class Item {
   public Item(String name, Long price) {
     this.name = name;
     this.price = price;
+  }
+
+  public void modify(ItemModifyParams params) {
+    this.name = params.getName();
+    this.price = params.getPrice();
   }
 }
