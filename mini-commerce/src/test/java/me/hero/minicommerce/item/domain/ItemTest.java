@@ -2,7 +2,7 @@ package me.hero.minicommerce.item.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import me.hero.minicommerce.item.domain.dto.ItemModifyDto;
+import me.hero.minicommerce.item.domain.dto.ItemModifyParams;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ class ItemTest {
   void modifyItem() {
     //given
     Item newItem = new Item("닭도리탕", 18000L);
-    ItemModifyDto params = new ItemModifyDto("닭도리탕", 20000L);
+    ItemModifyParams params = new ItemModifyParams("닭도리탕", 20000L);
 
     //when
     newItem.modify(params);
