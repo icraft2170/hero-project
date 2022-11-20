@@ -47,6 +47,15 @@ public class ItemSteps {
         .extract();
   }
 
+  public static ExtractableResponse<Response> 상품_조회(String deleteLocation) {
+    return RestAssured.given().log().all()
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .when()
+        .get(deleteLocation)
+        .then().log().all()
+        .extract();
+  }
+
 
 
 
