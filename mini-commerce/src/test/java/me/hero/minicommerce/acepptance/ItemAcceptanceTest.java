@@ -1,6 +1,7 @@
 package me.hero.minicommerce.acepptance;
 
 import static me.hero.minicommerce.acepptance.ItemSteps.상품_매개변수_생성;
+import static me.hero.minicommerce.acepptance.ItemSteps.상품_삭제;
 import static me.hero.minicommerce.acepptance.ItemSteps.상품_생성;
 import static me.hero.minicommerce.acepptance.ItemSteps.상품_수정;
 import static org.assertj.core.api.Assertions.*;
@@ -70,7 +71,16 @@ public class ItemAcceptanceTest extends AcceptanceTest {
   @Test
   @DisplayName("상품 삭제 기능")
   void deleteItem() {
+      //given
+      Map<String, String> params = 상품_매개변수_생성("닭볶음탕", "18000");
+      ExtractableResponse<Response> savedItem = 상품_생성(params);
 
+      String deleteLocation = savedItem.header("Location");
+      //when
+      ExtractableResponse<Response> response = 상품_삭제(deleteLocation);
+
+      //then
+      assertThat(response.statusCode()).isEqualTo(HttpStatus.OK);
   }
 
   /**
