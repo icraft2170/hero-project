@@ -8,6 +8,7 @@ import static org.mockito.BDDMockito.given;
 import java.util.Optional;
 import me.hero.minicommerce.item.domain.Item;
 import me.hero.minicommerce.item.repository.ItemRepository;
+import me.hero.minicommerce.item.service.dto.FindItemDto;
 import me.hero.minicommerce.item.service.dto.ModifiedItemDto;
 import me.hero.minicommerce.item.service.dto.ModifyItemDto;
 import org.junit.jupiter.api.DisplayName;
@@ -50,5 +51,32 @@ class ItemServiceTest {
     //when then
     assertThatCode(() -> itemService.modifyItem(1L, modifyDto))
         .isInstanceOf(RuntimeException.class);
+  }
+
+  @Test
+  @DisplayName("상품 조회 - 성공 케이스")
+  void getItemService_success() {
+    //given
+    Item item = new Item("닭볶음탕", 18000L);
+    given(itemRepository.findById(any())).willReturn(Optional.of(item));
+
+    //when
+    FindItemDto findItem = itemService.getItem(1L);
+
+    //then
+    assertThat(item.getName()).isEqualTo(findItem.getName());
+    assertThat(item.getPrice()).isEqualTo(findItem.getPrice());
+  }
+
+  @Test
+  @DisplayName("상품 조회 - 해당 값이 없는 케이스")
+  void getItemService_fail() {
+    //given
+    given(itemRepository.findById(any())).willReturn(Optional.empty());
+
+    //when then
+    assertThatCode(() -> itemService.getItem(1L))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("해당 상품을 찾을 수 없습니다.");
   }
 }
