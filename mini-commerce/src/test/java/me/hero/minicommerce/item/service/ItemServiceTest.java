@@ -91,9 +91,10 @@ class ItemServiceTest {
     //given
     Item item = new Item("닭볶음탕", 18000L);
     given(itemRepository.findById(any())).willReturn(Optional.of(item));
-    verify(itemRepository, atLeastOnce()).delete(any());
     //when then
     itemService.deleteItem(ITEM_ID);
+    //then
+    verify(itemRepository, atLeastOnce()).delete(any());
   }
 
   @Test
@@ -101,10 +102,10 @@ class ItemServiceTest {
   void deleteItem_fail() {
     //given
     given(itemRepository.findById(any())).willReturn(Optional.empty());
-    verify(itemRepository, never()).delete(any());
     //when then
     assertThatCode(() -> itemService.deleteItem(ITEM_ID))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessage("이미 존재하지 않는 상품입니다.");
+    verify(itemRepository, never()).delete(any());
   }
 }
