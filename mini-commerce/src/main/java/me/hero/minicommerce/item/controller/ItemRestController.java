@@ -4,13 +4,17 @@ import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import me.hero.minicommerce.item.controller.dto.CreateItemRequest;
 import me.hero.minicommerce.item.controller.dto.CreateItemResponse;
+import me.hero.minicommerce.item.controller.dto.FindItemResponse;
 import me.hero.minicommerce.item.controller.dto.ModifyItemRequest;
 import me.hero.minicommerce.item.controller.dto.ModifyItemResponse;
 import me.hero.minicommerce.item.service.ItemService;
 import me.hero.minicommerce.item.service.dto.CreateItemDto;
+import me.hero.minicommerce.item.service.dto.FindItemDto;
 import me.hero.minicommerce.item.service.dto.ModifiedItemDto;
 import me.hero.minicommerce.item.service.dto.ModifyItemDto;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -40,6 +44,20 @@ public class ItemRestController {
     ModifiedItemDto modifiedItemDto = itemService.modifyItem(itemId, modifyItemDto);
     return ResponseEntity.ok()
         .body(new ModifyItemResponse(modifiedItemDto));
+  }
+
+  @GetMapping("/{itemId}")
+  public ResponseEntity<FindItemResponse> findItem(@PathVariable long itemId) {
+    FindItemDto findItem = itemService.getItem(itemId);
+    return ResponseEntity.ok()
+        .body(new FindItemResponse(findItem));
+  }
+
+  @DeleteMapping("/{itemId}")
+  public ResponseEntity<Void> deleteItem(@PathVariable long itemId) {
+    itemService.deleteItem(itemId);
+    return ResponseEntity.ok()
+        .body(null);
   }
 
 }
