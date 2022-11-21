@@ -87,7 +87,7 @@ public class ItemAcceptanceTest extends AcceptanceTest {
       ExtractableResponse<Response> getResponse = 상품_조회(deleteLocation);
 
       //then
-      assertThat(getResponse.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+      assertThat(getResponse.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST.value());
   }
 
   /**
@@ -108,7 +108,7 @@ public class ItemAcceptanceTest extends AcceptanceTest {
     ExtractableResponse<Response> response = 상품_조회(deleteLocation);
 
     //then
-    assertThat(response.statusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
     assertThat(response.jsonPath().getString("name")).isEqualTo(params.get("name"));
     assertThat(response.jsonPath().getLong("price")).isEqualTo(Long.parseLong(params.get("price")));
   }
