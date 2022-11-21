@@ -81,7 +81,7 @@ public class ItemAcceptanceTest extends AcceptanceTest {
       ExtractableResponse<Response> response = 상품_삭제(deleteLocation);
 
       //then
-      assertThat(response.statusCode()).isEqualTo(HttpStatus.OK);
+      assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
 
       //when
       ExtractableResponse<Response> getResponse = 상품_조회(deleteLocation);

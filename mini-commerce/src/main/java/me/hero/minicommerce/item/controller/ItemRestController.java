@@ -13,6 +13,7 @@ import me.hero.minicommerce.item.service.dto.FindItemDto;
 import me.hero.minicommerce.item.service.dto.ModifiedItemDto;
 import me.hero.minicommerce.item.service.dto.ModifyItemDto;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,6 +51,13 @@ public class ItemRestController {
     FindItemDto findItem = itemService.getItem(itemId);
     return ResponseEntity.ok()
         .body(new FindItemResponse(findItem));
+  }
+
+  @DeleteMapping("/{itemId}")
+  public ResponseEntity<Void> deleteItem(@PathVariable long itemId) {
+    itemService.deleteItem(itemId);
+    return ResponseEntity.ok()
+        .body(null);
   }
 
 }
