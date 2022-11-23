@@ -59,32 +59,6 @@ class ItemServiceTest {
         .isInstanceOf(RuntimeException.class);
   }
 
-  @Test
-  @DisplayName("상품 조회 - 성공 케이스")
-  void getItemService_success() {
-    //given
-    Item item = new Item("닭볶음탕", 18000L);
-    given(itemRepository.findById(any())).willReturn(Optional.of(item));
-
-    //when
-    FindItemDto findItem = itemService.getItem(ITEM_ID);
-
-    //then
-    assertThat(item.getName()).isEqualTo(findItem.getName());
-    assertThat(item.getPrice()).isEqualTo(findItem.getPrice());
-  }
-
-  @Test
-  @DisplayName("상품 조회 - 해당 값이 없는 케이스")
-  void getItemService_fail() {
-    //given
-    given(itemRepository.findById(any())).willReturn(Optional.empty());
-
-    //when then
-    assertThatCode(() -> itemService.getItem(ITEM_ID))
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessage("해당 상품을 찾을 수 없습니다.");
-  }
 
   @Test
   @DisplayName("상품 삭제 - 성공 케이스")
