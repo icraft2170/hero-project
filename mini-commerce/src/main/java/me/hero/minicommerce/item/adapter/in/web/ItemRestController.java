@@ -9,6 +9,7 @@ import me.hero.minicommerce.item.adapter.in.web.dto.ModifyItemRequest;
 import me.hero.minicommerce.item.adapter.in.web.dto.ModifyItemResponse;
 import me.hero.minicommerce.item.application.ItemService;
 import me.hero.minicommerce.item.application.port.in.CreateItemUseCase;
+import me.hero.minicommerce.item.application.port.in.ShowOneItemUseCase;
 import me.hero.minicommerce.item.application.port.in.dto.CreateItemDto;
 import me.hero.minicommerce.item.application.port.in.dto.FindItemDto;
 import me.hero.minicommerce.item.application.port.in.dto.ModifiedItemDto;
@@ -31,6 +32,7 @@ public class ItemRestController {
 
   private final ItemService itemService;
   private final CreateItemUseCase createItemUseCase;
+  private final ShowOneItemUseCase showOneItemUseCase;
 
   @PostMapping("")
   public ResponseEntity<CreateItemResponse> createItem(@RequestBody CreateItemRequest request) {
@@ -51,7 +53,7 @@ public class ItemRestController {
 
   @GetMapping("/{itemId}")
   public ResponseEntity<FindItemResponse> findItem(@PathVariable long itemId) {
-    FindItemDto findItem = itemService.getItem(itemId);
+    FindItemDto findItem = showOneItemUseCase.showOneItem(itemId);
     return ResponseEntity.ok()
         .body(new FindItemResponse(findItem));
   }
