@@ -24,11 +24,6 @@ public class ItemService {
     return new ModifiedItemDto(findItem);
   }
 
-  public FindItemDto getItem(long itemId) {
-    Item findItem = itemRepository.findById(itemId)
-        .orElseThrow(() -> new IllegalArgumentException("해당 상품을 찾을 수 없습니다."));
-    return new FindItemDto(findItem);
-  }
 
   public void deleteItem(long itemId) {
     Item findItem = itemRepository.findById(itemId)
