@@ -1,7 +1,7 @@
 package me.hero.minicommerce.item.adapter.in.web.dto;
 
 import lombok.Data;
-import me.hero.minicommerce.item.application.dto.FindItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.FindItemDto;
 
 @Data
 public class FindItemResponse {

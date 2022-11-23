@@ -1,17 +1,18 @@
-package me.hero.minicommerce.item.application.dto;
+package me.hero.minicommerce.item.application.port.in.dto;
 
+import lombok.Getter;
 import lombok.Value;
 import me.hero.minicommerce.item.domain.Item;
 
+@Getter
 @Value
-public class ModifiedItemDto {
-  private final Long id;
+public class FindItemDto {
   private final String name;
   private final Long price;
 
-  public ModifiedItemDto(Item item) {
-    this.id = item.getId();
+  public FindItemDto(Item item) {
     this.name = item.getName();
     this.price = item.getPrice();
   }
+
 }

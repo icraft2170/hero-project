@@ -8,10 +8,12 @@ import me.hero.minicommerce.item.adapter.in.web.dto.FindItemResponse;
 import me.hero.minicommerce.item.adapter.in.web.dto.ModifyItemRequest;
 import me.hero.minicommerce.item.adapter.in.web.dto.ModifyItemResponse;
 import me.hero.minicommerce.item.application.ItemService;
-import me.hero.minicommerce.item.application.dto.CreateItemDto;
-import me.hero.minicommerce.item.application.dto.FindItemDto;
-import me.hero.minicommerce.item.application.dto.ModifiedItemDto;
-import me.hero.minicommerce.item.application.dto.ModifyItemDto;
+import me.hero.minicommerce.item.application.port.in.CreateItemUseCase;
+import me.hero.minicommerce.item.application.port.in.dto.CreateItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.FindItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.ModifiedItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.ModifyItemDto;
+import me.hero.minicommerce.item.application.port.out.CreateItemPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +30,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ItemRestController {
 
   private final ItemService itemService;
+  private final CreateItemUseCase createItemUseCase;
 
   @PostMapping("")
   public ResponseEntity<CreateItemResponse> createItem(@RequestBody CreateItemRequest request) {
-    CreateItemDto itemDto = itemService.createItem(request.toDto());
+    CreateItemDto itemDto = createItemUseCase.createItem(request.toDto());
     CreateItemResponse createItemResponse = new CreateItemResponse(itemDto);
     return ResponseEntity.created(URI.create("/items/" + createItemResponse.getId()))
         .body(createItemResponse);

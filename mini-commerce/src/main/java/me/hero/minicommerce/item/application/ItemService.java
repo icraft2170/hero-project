@@ -3,11 +3,11 @@ package me.hero.minicommerce.item.application;
 import lombok.RequiredArgsConstructor;
 import me.hero.minicommerce.item.domain.Item;
 import me.hero.minicommerce.item.domain.dto.ItemModifyParams;
-import me.hero.minicommerce.item.application.dto.CreateItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.CreateItemDto;
 import me.hero.minicommerce.item.adapter.out.persistance.ItemRepository;
-import me.hero.minicommerce.item.application.dto.FindItemDto;
-import me.hero.minicommerce.item.application.dto.ModifiedItemDto;
-import me.hero.minicommerce.item.application.dto.ModifyItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.FindItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.ModifiedItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.ModifyItemDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ItemService {
   private final ItemRepository itemRepository;
-
-  public CreateItemDto createItem(CreateItemDto itemDto) {
-    Item savedItem = itemRepository.save(itemDto.toEntity());
-    return new CreateItemDto(savedItem);
-  }
 
   @Transactional
   public ModifiedItemDto modifyItem(Long itemId, ModifyItemDto modifyDto) {

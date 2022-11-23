@@ -2,7 +2,7 @@ package me.hero.minicommerce.item.adapter.in.web.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import me.hero.minicommerce.item.application.dto.ModifiedItemDto;
+import me.hero.minicommerce.item.application.port.in.dto.ModifiedItemDto;
 
 @Data @NoArgsConstructor
 public class ModifyItemResponse {
