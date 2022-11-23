@@ -3,6 +3,7 @@ package me.hero.minicommerce.item.repository;
 
 import static org.assertj.core.api.Assertions.*;
 
+import me.hero.minicommerce.item.adapter.out.persistance.ItemRepository;
 import me.hero.minicommerce.item.domain.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

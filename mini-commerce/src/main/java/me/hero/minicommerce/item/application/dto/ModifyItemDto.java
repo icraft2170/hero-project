@@ -1,4 +1,4 @@
-package me.hero.minicommerce.item.service.dto;
+package me.hero.minicommerce.item.application.dto;
 
 
 import lombok.Value;

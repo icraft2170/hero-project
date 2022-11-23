@@ -1,7 +1,7 @@
-package me.hero.minicommerce.item.controller.dto;
+package me.hero.minicommerce.item.adapter.in.web.dto;
 
 import lombok.Value;
-import me.hero.minicommerce.item.service.dto.CreateItemDto;
+import me.hero.minicommerce.item.application.dto.CreateItemDto;
 
 @Value
 public class CreateItemResponse {

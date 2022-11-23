@@ -1,4 +1,4 @@
-package me.hero.minicommerce.item.controller.dto;
+package me.hero.minicommerce.item.adapter.in.web.dto;
 
 import lombok.Data;
 

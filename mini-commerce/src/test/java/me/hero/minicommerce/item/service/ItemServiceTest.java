@@ -9,11 +9,12 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
+import me.hero.minicommerce.item.application.ItemService;
 import me.hero.minicommerce.item.domain.Item;
-import me.hero.minicommerce.item.repository.ItemRepository;
-import me.hero.minicommerce.item.service.dto.FindItemDto;
-import me.hero.minicommerce.item.service.dto.ModifiedItemDto;
-import me.hero.minicommerce.item.service.dto.ModifyItemDto;
+import me.hero.minicommerce.item.adapter.out.persistance.ItemRepository;
+import me.hero.minicommerce.item.application.dto.FindItemDto;
+import me.hero.minicommerce.item.application.dto.ModifiedItemDto;
+import me.hero.minicommerce.item.application.dto.ModifyItemDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
