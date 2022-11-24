@@ -9,6 +9,7 @@ import me.hero.minicommerce.item.adapter.in.web.dto.ModifyItemRequest;
 import me.hero.minicommerce.item.adapter.in.web.dto.ModifyItemResponse;
 import me.hero.minicommerce.item.application.ItemService;
 import me.hero.minicommerce.item.application.port.in.CreateItemUseCase;
+import me.hero.minicommerce.item.application.port.in.ModifyItemUseCase;
 import me.hero.minicommerce.item.application.port.in.ShowOneItemUseCase;
 import me.hero.minicommerce.item.application.port.in.dto.CreateItemDto;
 import me.hero.minicommerce.item.application.port.in.dto.FindItemDto;
@@ -34,6 +35,9 @@ public class ItemRestController {
   private final CreateItemUseCase createItemUseCase;
   private final ShowOneItemUseCase showOneItemUseCase;
 
+  private final ModifyItemUseCase modifyItemUseCase;
+
+
   @PostMapping("")
   public ResponseEntity<CreateItemResponse> createItem(@RequestBody CreateItemRequest request) {
     CreateItemDto itemDto = createItemUseCase.createItem(request.toDto());
@@ -46,7 +50,7 @@ public class ItemRestController {
   public ResponseEntity<ModifyItemResponse> modifyItem(@RequestBody ModifyItemRequest request,
       @PathVariable Long itemId) {
     ModifyItemDto modifyItemDto = new ModifyItemDto(request.getName(), request.getPrice());
-    ModifiedItemDto modifiedItemDto = itemService.modifyItem(itemId, modifyItemDto);
+    ModifiedItemDto modifiedItemDto = modifyItemUseCase.modifyItem(itemId, modifyItemDto);
     return ResponseEntity.ok()
         .body(new ModifyItemResponse(modifiedItemDto));
   }

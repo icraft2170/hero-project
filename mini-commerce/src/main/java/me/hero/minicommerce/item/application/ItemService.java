@@ -14,14 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class ItemService {
   private final ItemRepository itemRepository;
 
-  @Transactional
-  public ModifiedItemDto modifyItem(Long itemId, ModifyItemDto modifyDto) {
-    Item findItem = itemRepository.findById(itemId).orElseThrow(RuntimeException::new);
-    ItemModifyParams params = modifyDto.toDto();
-    findItem.modify(params);
-    return new ModifiedItemDto(findItem);
-  }
-
 
   public void deleteItem(long itemId) {
     Item findItem = itemRepository.findById(itemId)
