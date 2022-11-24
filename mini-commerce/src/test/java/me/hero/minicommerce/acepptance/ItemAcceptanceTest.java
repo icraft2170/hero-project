@@ -38,7 +38,7 @@ public class ItemAcceptanceTest extends AcceptanceTest {
   }
 
   /**
-   * Feature : 상품 생성 기능
+   * Feature : 상품 수정 기능
    *  Given : 상품이 생성되어 있다.
    *  When : 상품 수정 요청을 한다.
    *  Then : 상품이 수정 된다.
