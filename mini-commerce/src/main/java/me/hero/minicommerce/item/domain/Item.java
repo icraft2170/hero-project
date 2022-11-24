@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.hero.minicommerce.item.domain.dto.ItemModifyParams;
+import me.hero.minicommerce.item.adapter.out.persistance.dto.ItemModifyParams;
 import org.hibernate.annotations.Comment;
 
 @NoArgsConstructor
