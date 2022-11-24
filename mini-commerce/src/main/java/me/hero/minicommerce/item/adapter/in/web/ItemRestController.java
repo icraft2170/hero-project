@@ -8,6 +8,7 @@ import me.hero.minicommerce.item.adapter.in.web.dto.FindItemResponse;
 import me.hero.minicommerce.item.adapter.in.web.dto.ModifyItemRequest;
 import me.hero.minicommerce.item.adapter.in.web.dto.ModifyItemResponse;
 import me.hero.minicommerce.item.application.port.in.CreateItemUseCase;
+import me.hero.minicommerce.item.application.port.in.DeleteItemUseCase;
 import me.hero.minicommerce.item.application.port.in.ModifyItemUseCase;
 import me.hero.minicommerce.item.application.port.in.ShowOneItemUseCase;
 import me.hero.minicommerce.item.application.port.in.dto.CreateItemDto;
@@ -29,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/items")
 public class ItemRestController {
 
-  private final ItemService itemService;
+  private final DeleteItemUseCase deleteItemUseCase;
   private final CreateItemUseCase createItemUseCase;
   private final ShowOneItemUseCase showOneItemUseCase;
 
@@ -62,7 +63,7 @@ public class ItemRestController {
 
   @DeleteMapping("/{itemId}")
   public ResponseEntity<Void> deleteItem(@PathVariable long itemId) {
-    itemService.deleteItem(itemId);
+    deleteItemUseCase.deleteItem(itemId);
     return ResponseEntity.ok()
         .body(null);
   }
