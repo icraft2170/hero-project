@@ -1,4 +1,4 @@
-package me.hero.minicommerce.item.domain.dto;
+package me.hero.minicommerce.item.adapter.out.persistance.dto;
 
 import java.util.Objects;
 import lombok.Builder;

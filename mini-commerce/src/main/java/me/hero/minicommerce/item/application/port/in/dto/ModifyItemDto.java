@@ -2,7 +2,7 @@ package me.hero.minicommerce.item.application.port.in.dto;
 
 
 import lombok.Value;
-import me.hero.minicommerce.item.domain.dto.ItemModifyParams;
+import me.hero.minicommerce.item.adapter.out.persistance.dto.ItemModifyParams;
 
 @Value
 public class ModifyItemDto {

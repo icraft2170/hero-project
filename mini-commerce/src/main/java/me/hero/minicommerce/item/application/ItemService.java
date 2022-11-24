@@ -2,10 +2,8 @@ package me.hero.minicommerce.item.application;
 
 import lombok.RequiredArgsConstructor;
 import me.hero.minicommerce.item.domain.Item;
-import me.hero.minicommerce.item.domain.dto.ItemModifyParams;
-import me.hero.minicommerce.item.application.port.in.dto.CreateItemDto;
+import me.hero.minicommerce.item.adapter.out.persistance.dto.ItemModifyParams;
 import me.hero.minicommerce.item.adapter.out.persistance.ItemRepository;
-import me.hero.minicommerce.item.application.port.in.dto.FindItemDto;
 import me.hero.minicommerce.item.application.port.in.dto.ModifiedItemDto;
 import me.hero.minicommerce.item.application.port.in.dto.ModifyItemDto;
 import org.springframework.stereotype.Service;
