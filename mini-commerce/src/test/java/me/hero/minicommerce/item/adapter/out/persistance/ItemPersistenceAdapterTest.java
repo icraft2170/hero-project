@@ -9,7 +9,6 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
-import me.hero.minicommerce.item.application.ItemService;
 import me.hero.minicommerce.item.application.port.in.dto.ModifyItemDto;
 import me.hero.minicommerce.item.domain.Item;
 import org.assertj.core.api.Assertions;
