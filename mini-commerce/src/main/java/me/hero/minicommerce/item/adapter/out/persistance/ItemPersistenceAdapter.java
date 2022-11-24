@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import me.hero.minicommerce.item.adapter.out.persistance.dto.ItemModifyParams;
 import me.hero.minicommerce.item.application.port.in.dto.ModifyItemDto;
 import me.hero.minicommerce.item.application.port.out.CreateItemPort;
+import me.hero.minicommerce.item.application.port.out.DeleteItemPort;
 import me.hero.minicommerce.item.application.port.out.ModifyItemPort;
 import me.hero.minicommerce.item.application.port.out.ShowOneItemPort;
 import me.hero.minicommerce.item.domain.Item;
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class ItemPersistenceAdapter implements CreateItemPort, ShowOneItemPort, ModifyItemPort {
+public class ItemPersistenceAdapter implements CreateItemPort, ShowOneItemPort, ModifyItemPort,
+    DeleteItemPort {
 
   private final ItemRepository itemRepository;
 
@@ -32,5 +34,10 @@ public class ItemPersistenceAdapter implements CreateItemPort, ShowOneItemPort, 
     ItemModifyParams params = modifyItemDto.toDto();
     modifiedItem.modify(params);
     return modifiedItem;
+  }
+
+  @Override
+  public void deleteItem(long itemId) {
+
   }
 }
