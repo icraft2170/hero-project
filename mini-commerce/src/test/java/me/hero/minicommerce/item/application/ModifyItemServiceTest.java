@@ -6,11 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
-import java.util.Optional;
 import me.hero.minicommerce.item.application.port.in.dto.ModifiedItemDto;
 import me.hero.minicommerce.item.application.port.in.dto.ModifyItemDto;
 import me.hero.minicommerce.item.application.port.out.ModifyItemPort;
-import me.hero.minicommerce.item.application.port.out.ShowOneItemPort;
 import me.hero.minicommerce.item.domain.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,6 +17,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+@DisplayName("상품 수정 서비스 테스트")
 @ExtendWith({MockitoExtension.class})
 class ModifyItemServiceTest {
 

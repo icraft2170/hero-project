@@ -6,6 +6,7 @@ import me.hero.minicommerce.item.adapter.out.persistance.dto.ItemModifyParams;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("상품 도메인 테스트")
 class ItemTest {
 
 

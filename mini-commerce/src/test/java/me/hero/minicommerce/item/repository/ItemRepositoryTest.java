@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
  * 목적 : 업무 중에 이와 같은 테스트가 필요한지 여부는 모르겠지만. 한 번쯤을 할 필요가 있다고 느낌. */
 @DataJpaTest
 @AutoConfigureTestDatabase
+@DisplayName("Spring Data JPA (ItemRepository) 테스트")
 class ItemRepositoryTest {
 
   @Autowired

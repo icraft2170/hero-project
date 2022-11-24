@@ -19,6 +19,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+@DisplayName("상품 영속성 어댑터 테스트")
 @ExtendWith({MockitoExtension.class})
 class ItemPersistenceAdapterTest {
   @InjectMocks
