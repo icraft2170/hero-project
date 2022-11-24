@@ -32,32 +32,6 @@ class ItemServiceTest {
   @Mock
   private ItemRepository itemRepository;
 
-  @Test
-  @DisplayName("상품 수정 - 성공 케이스")
-  void modifyItem() {
-    //given
-    Item item = new Item("닭볶음탕", 18000L);
-    ModifyItemDto modifyDto = new ModifyItemDto("닭볶음탕", 20000L);
-    given(itemRepository.findById(any())).willReturn(Optional.of(item));
-    //when
-    ModifiedItemDto dto = itemService.modifyItem(ITEM_ID, modifyDto);
-
-    //then
-    assertThat(dto.getName()).isEqualTo(modifyDto.getName());
-    assertThat(dto.getPrice()).isEqualTo(modifyDto.getPrice());
-  }
-
-  @Test
-  @DisplayName("상품 수정 - 실패 케이스 ( Repository.find()가 null 일 때 )")
-  void failModifyItem() {
-    //given
-    Item item = new Item("닭볶음탕", 18000L);
-    ModifyItemDto modifyDto = new ModifyItemDto("닭볶음탕", 20000L);
-    given(itemRepository.findById(any())).willReturn(Optional.empty());
-    //when then
-    assertThatCode(() -> itemService.modifyItem(ITEM_ID, modifyDto))
-        .isInstanceOf(RuntimeException.class);
-  }
 
 
   @Test

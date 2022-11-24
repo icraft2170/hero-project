@@ -28,9 +28,9 @@ public class ItemPersistenceAdapter implements CreateItemPort, ShowOneItemPort, 
 
   @Override
   public Item modifyItem(Long itemId, ModifyItemDto modifyItemDto) {
-    Item findItem = itemRepository.findById(itemId).orElseThrow(RuntimeException::new);
+    Item modifiedItem = itemRepository.findById(itemId).orElseThrow(RuntimeException::new);
     ItemModifyParams params = modifyItemDto.toDto();
-    findItem.modify(params);
-    return null;
+    modifiedItem.modify(params);
+    return modifiedItem;
   }
 }
