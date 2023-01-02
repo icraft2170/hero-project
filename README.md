@@ -13,6 +13,6 @@
 2. [쇼핑몰에 헥사고날 아키텍처 적용하기](https://internet-craft.tistory.com/102)
     - [Kanban Board](https://www.notion.so/hero-0/6-6223fc87af0b47ad8e712518d7a7cde6)
     - [Git Issue #6](https://github.com/icraft2170/hero-project/issues/6)
-3. [자바로 구성된 프로젝 코틀린으로 리팩터링]()
+3. [자바로 구성된 테스트코드 코틀린으로 리팩터링]()
    -  [Git Issue #11](https://github.com/icraft2170/hero-project/issues/11)
 
