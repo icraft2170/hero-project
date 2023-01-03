@@ -11,10 +11,7 @@ public class CreateItemRequest {
   public CreateItemRequest() {}
 
   public CreateItemDto toDto() {
-    return CreateItemDto.builder()
-        .name(name)
-        .price(price)
-        .build();
+    return new CreateItemDto(null, name, price);
   }
 
 }

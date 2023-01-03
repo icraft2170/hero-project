@@ -25,7 +25,7 @@ internal class ModifyItemServiceTest{
     fun modifyItem() {
         //given
         val modifyDto = ModifyItemDto("닭볶음탕", 20000L)
-        val modifiedItem = Item("닭볶음탕", 20000L)
+        val modifiedItem = Item("닭볶음탕", 20000L, ITEM_ID)
         BDDMockito.given(
             modifyItemPort.modifyItem(
                 ArgumentMatchers.any(),

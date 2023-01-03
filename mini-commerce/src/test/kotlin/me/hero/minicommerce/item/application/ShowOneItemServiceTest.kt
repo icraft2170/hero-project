@@ -26,7 +26,7 @@ class ShowOneItemServiceTest{
     @Test
     fun itemService_success() {
         //given
-        val item = Item("닭볶음탕", 18000L)
+        val item = Item("닭볶음탕", 18000L, ITEM_ID)
         BDDMockito.given<Optional<Item>>(showOneItemPort.findOneItem(ArgumentMatchers.anyLong()))
             .willReturn(Optional.of(item))
 
