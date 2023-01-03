@@ -27,10 +27,11 @@ class ItemRepositoryTest(
     @DisplayName("상품 Insert 테스트")
     fun saveItem() {
         //given
-        val 닭볶음탕 = Item.builder()
-            .name("닭볶음탕")
-            .price(18000L)
-            .build()
+        val 닭볶음탕 = Item(
+            name = "닭볶음탕",
+            price = 18000L
+        )
+
         //when
         val savedItem = itemRepository.save(닭볶음탕)
 
@@ -43,13 +44,13 @@ class ItemRepositoryTest(
     @DisplayName("상품 조회 테스트")
     fun findByIdTest() {
         //given
-        val 닭볶음탕 = Item.builder()
-            .name("닭볶음탕")
-            .price(18000L)
-            .build()
+        val 닭볶음탕 = Item(
+            name = "닭볶음탕",
+            price = 18000L
+        )
         //when
         val persist: Item = testEntityManager.persist(닭볶음탕)
-        val savedItem = itemRepository.findById(persist.id).orElseGet { Item.builder().build() }
+        val savedItem = itemRepository.findById(persist.id).orElseGet { Item("", 0, null) }
 
         //then
         Assertions.assertThat(savedItem.name).isEqualTo(닭볶음탕.name)

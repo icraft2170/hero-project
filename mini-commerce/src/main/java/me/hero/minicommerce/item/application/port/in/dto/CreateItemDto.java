@@ -26,9 +26,6 @@ public class CreateItemDto {
     this.price = item.getPrice();
   }
   public Item toEntity() {
-    return Item.builder()
-        .name(name)
-        .price(price)
-        .build();
+    return new Item(name, price, null);
   }
 }
