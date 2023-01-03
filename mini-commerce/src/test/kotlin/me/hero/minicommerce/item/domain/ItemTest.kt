@@ -1,7 +1,7 @@
 package me.hero.minicommerce.item.domain
 
 import me.hero.minicommerce.item.adapter.out.persistance.dto.ItemModifyParams
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
@@ -18,7 +18,7 @@ internal class ItemTest {
         newItem.modify(params)
 
         //then
-        Assertions.assertThat(newItem.name).isEqualTo(params.getName())
-        Assertions.assertThat(newItem.price).isEqualTo(params.getPrice())
+        assertThat(newItem.name).isEqualTo(params.name)
+        assertThat(newItem.price).isEqualTo(params.price)
     }
 }
