@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 class ModifyItemService (
-    private val modifyItemPort: ModifyItemPort
+    private val modifyItemPort: ModifyItemPort,
 ) : ModifyItemUseCase{
 
     override fun modifyItem(itemId: Long, modifyItemDto: ModifyItemDto): ModifiedItemDto {

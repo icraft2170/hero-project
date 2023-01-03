@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class CreateItemService(
-    private val createItemPort: CreateItemPort
+    private val createItemPort: CreateItemPort,
 ) : CreateItemUseCase {
 
     override fun createItem(itemDto: CreateItemDto): CreateItemDto {

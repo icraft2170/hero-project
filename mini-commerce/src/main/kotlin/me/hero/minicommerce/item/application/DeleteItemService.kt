@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class DeleteItemService (
-    private val deleteItemPort: DeleteItemPort
+    private val deleteItemPort: DeleteItemPort,
 ) : DeleteItemUseCase{
 
     override fun deleteItem(itemId: Long) {
