@@ -9,6 +9,7 @@ import me.hero.minicommerce.item.application.port.out.DeleteItemPort;
 import me.hero.minicommerce.item.application.port.out.ModifyItemPort;
 import me.hero.minicommerce.item.application.port.out.ShowOneItemPort;
 import me.hero.minicommerce.item.domain.Item;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
@@ -29,17 +30,18 @@ public class ItemPersistenceAdapter implements CreateItemPort, ShowOneItemPort, 
   }
 
   @Override
-  public Item modifyItem(Long itemId, ModifyItemDto modifyItemDto) {
-    Item modifiedItem = itemRepository.findById(itemId).orElseThrow(RuntimeException::new);
-    ItemModifyParams params = modifyItemDto.toDto();
-    modifiedItem.modify(params);
-    return modifiedItem;
-  }
-
-  @Override
   public void deleteItem(long itemId) {
     Item findItem = itemRepository.findById(itemId)
         .orElseThrow(() -> new IllegalArgumentException("이미 존재하지 않는 상품입니다."));
     itemRepository.delete(findItem);
+  }
+
+  @NotNull
+  @Override
+  public Item modifyItem(long itemId, @NotNull ModifyItemDto modifyItemDto) {
+    Item modifiedItem = itemRepository.findById(itemId).orElseThrow(RuntimeException::new);
+    ItemModifyParams params = modifyItemDto.toDto();
+    modifiedItem.modify(params);
+    return modifiedItem;
   }
 }

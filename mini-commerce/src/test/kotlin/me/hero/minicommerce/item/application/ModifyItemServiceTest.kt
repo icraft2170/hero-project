@@ -8,11 +8,11 @@ import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers
-import org.mockito.BDDMockito
 import org.mockito.InjectMocks
 import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.*
 
 @DisplayName("상품 수정 서비스 테스트")
 @ExtendWith(MockitoExtension::class)
@@ -26,12 +26,15 @@ internal class ModifyItemServiceTest{
         //given
         val modifyDto = ModifyItemDto("닭볶음탕", 20000L)
         val modifiedItem = Item("닭볶음탕", 20000L, ITEM_ID)
-        BDDMockito.given(
+
+        // any() 는 java Class
+        Mockito.`when`(
             modifyItemPort.modifyItem(
-                ArgumentMatchers.any(),
-                ArgumentMatchers.any()
+                anyOrNull(),
+                anyVararg()
             )
-        ).willReturn(modifiedItem)
+        ).thenReturn(modifiedItem)
+
 
         //when
         val dto: ModifiedItemDto = modifyItemService.modifyItem(ITEM_ID, modifyDto)
