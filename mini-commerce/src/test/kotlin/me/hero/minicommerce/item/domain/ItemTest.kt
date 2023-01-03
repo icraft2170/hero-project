@@ -18,7 +18,7 @@ internal class ItemTest {
         newItem.modify(params)
 
         //then
-        Assertions.assertThat(newItem.name).isEqualTo(params.getName())
-        Assertions.assertThat(newItem.price).isEqualTo(params.getPrice())
+        Assertions.assertThat(newItem.name).isEqualTo(params.name)
+        Assertions.assertThat(newItem.price).isEqualTo(params.price)
     }
 }
