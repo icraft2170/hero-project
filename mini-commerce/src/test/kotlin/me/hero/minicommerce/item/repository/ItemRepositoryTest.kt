@@ -2,7 +2,7 @@ package me.hero.minicommerce.item.repository
 
 import me.hero.minicommerce.item.adapter.out.persistance.ItemRepository
 import me.hero.minicommerce.item.domain.Item
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -36,8 +36,8 @@ class ItemRepositoryTest(
         val savedItem = itemRepository.save(닭볶음탕)
 
         //then
-        Assertions.assertThat(savedItem.name).isEqualTo(닭볶음탕.name)
-        Assertions.assertThat(savedItem.price).isEqualTo(닭볶음탕.price)
+        assertThat(savedItem.name).isEqualTo(닭볶음탕.name)
+        assertThat(savedItem.price).isEqualTo(닭볶음탕.price)
     }
 
     @Test
@@ -53,7 +53,7 @@ class ItemRepositoryTest(
         val savedItem = itemRepository.findById(persist.id).orElseGet { Item("", 0, null) }
 
         //then
-        Assertions.assertThat(savedItem.name).isEqualTo(닭볶음탕.name)
-        Assertions.assertThat(savedItem.price).isEqualTo(닭볶음탕.price)
+        assertThat(savedItem.name).isEqualTo(닭볶음탕.name)
+        assertThat(savedItem.price).isEqualTo(닭볶음탕.price)
     }
 }

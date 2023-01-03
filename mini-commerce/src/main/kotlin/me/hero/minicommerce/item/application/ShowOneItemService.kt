@@ -12,7 +12,6 @@ class ShowOneItemService (
 
     override fun showOneItem(itemId: Long): FindItemDto {
         val findItem = showOneItemPort.findOneItem(itemId)
-            .orElseThrow { IllegalArgumentException("해당 상품을 찾을 수 없습니다.") }
         return FindItemDto(findItem)
     }
 }

@@ -4,7 +4,7 @@ import me.hero.minicommerce.item.application.port.`in`.dto.ModifiedItemDto
 import me.hero.minicommerce.item.application.port.`in`.dto.ModifyItemDto
 import me.hero.minicommerce.item.application.port.out.ModifyItemPort
 import me.hero.minicommerce.item.domain.Item
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -12,7 +12,8 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
-import org.mockito.kotlin.*
+import org.mockito.kotlin.anyOrNull
+import org.mockito.kotlin.anyVararg
 
 @DisplayName("상품 수정 서비스 테스트")
 @ExtendWith(MockitoExtension::class)
@@ -40,8 +41,8 @@ internal class ModifyItemServiceTest{
         val dto: ModifiedItemDto = modifyItemService.modifyItem(ITEM_ID, modifyDto)
 
         //then
-        Assertions.assertThat(dto.name).isEqualTo(modifiedItem.name)
-        Assertions.assertThat(dto.price).isEqualTo(modifiedItem.price)
+        assertThat(dto.name).isEqualTo(modifiedItem.name)
+        assertThat(dto.price).isEqualTo(modifiedItem.price)
     }
 
     companion object {

@@ -6,7 +6,7 @@ data class ModifyItemDto(
     val name: String,
     val price: Long,
 ) {
-    fun toDto(): ItemModifyParams {
+    fun toParams(): ItemModifyParams {
         return ItemModifyParams(name, price)
     }
 }
